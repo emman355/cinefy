@@ -1,5 +1,21 @@
-import { Stack } from "expo-router";
+import { ClerkProvider } from '@clerk/clerk-expo'
+import * as WebBrowser from 'expo-web-browser';
+import { tokenCache } from "@clerk/clerk-expo/token-cache";
+import { Slot } from 'expo-router'
+import { CLERK_PUBLISHABLE_KEY } from "../constants/api"
+import { StatusBar } from 'expo-status-bar';
+
+WebBrowser.maybeCompleteAuthSession();
 
 export default function RootLayout() {
-  return <Stack />;
+  if (!CLERK_PUBLISHABLE_KEY) {
+    throw new Error("Missing Clerk Publishable Key!");
+  }
+
+  return (
+    <ClerkProvider tokenCache={tokenCache} publishableKey={CLERK_PUBLISHABLE_KEY}>
+      <Slot />
+      <StatusBar style="dark" />
+    </ClerkProvider>
+  )
 }
