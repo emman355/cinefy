@@ -2,8 +2,8 @@ import { View, ActivityIndicator } from 'react-native'
 
 const PageLoader = () => {
     return (
-        <View className='items-center flex-1 justify-center bg-slate-600'>
-            <ActivityIndicator size="large" className='bg-red-700' />
+        <View className='items-center flex-1 justify-center bg-primary'>
+            <ActivityIndicator size={50} className='color-red-900' />
         </View>
     )
 }

@@ -1,6 +1,6 @@
 import { Redirect, Stack } from 'expo-router'
 import { useAuth } from '@clerk/clerk-expo'
-import PageLoader from '../../components/PageLoader'
+import PageLoader from '../../components/loader/PageLoader'
 const AuthRoutesLayout = () => {    
     const { isLoaded, isSignedIn } = useAuth()
     if (!isLoaded) {
@@ -10,7 +10,7 @@ const AuthRoutesLayout = () => {
     }
 
     if (isSignedIn) {
-        return <Redirect href={'/(root)/index'} />
+        return <Redirect href={'/(root)'} />
     }
 
     return <Stack screenOptions={{ headerShown: false }} />
